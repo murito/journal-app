@@ -82,12 +82,17 @@ export const startUploading = (file) => {
             }
         });
 
-        const fileUrl = await fileUpload(file);
-        activeNote.url = fileUrl;
+        try{
+            const fileUrl = await fileUpload(file);
+            activeNote.url = fileUrl;
 
-        dispatch(startSaveNote(activeNote));
+            dispatch(startSaveNote(activeNote));
+            Swal.close();
+        }catch(error){
+            Swal.close();
+            Swal.fire('Error', error.message, 'error');
+        }
 
-        Swal.close();
     }
 }
 
