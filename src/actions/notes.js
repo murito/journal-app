@@ -100,9 +100,16 @@ export const startDeleteNote = ( id ) => {
     return async (dispatch, getState) => {
         const { uid } = getState().auth;
         const { notes } = getState().notes;
+        const currentNote = notes.find(note => note.id === id);
 
         const result = await Swal.fire({
-            title: 'Do you really want to delete this item?',
+            title: `Are you sure you want to delete this Note:`,
+            html: `
+                <div style="display: ${ currentNote.url ? 'block' : 'none' }">
+                    <img style="width: 140px;" src="${currentNote.url}"/>
+                </div>
+                <strong>[${currentNote.title}]</strong>
+            `,
             showDenyButton: true,
             showCancelButton: true,
             showConfirmButton: false,

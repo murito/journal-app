@@ -11,5 +11,5 @@ export const loadNotes = async ( uid ) => {
         });
     });
 
-    return notes;
+    return notes.sort((a,b)=> b.date - a.date);
 }

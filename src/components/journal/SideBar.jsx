@@ -29,8 +29,8 @@ export const SideBar = () => {
                 </button>
             </div>
 
-            <div className="journal__new-entry" onClick={ handleAddNew }>
-                <div className="fab">
+            <div className="journal__new-entry">
+                <div className="fab" onClick={ handleAddNew }>
                     <div className="avatar">
                         <i className="far fa-calendar"></i>
                     </div>
